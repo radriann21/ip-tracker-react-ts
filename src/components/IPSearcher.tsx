@@ -1,4 +1,5 @@
 import { Box } from "@mui/material"
+import { IpInformation } from "./IpInformation"
 import { IPInput } from "./IPInput"
 import bgPattern from '../assets/pattern-bg-desktop.png'
 
@@ -7,12 +8,12 @@ export const IPSearcher = () => {
     <Box
       component={'section'}
       sx={{
+        position: 'relative',
+        padding: '2rem',
         width: '100%',
-        height: '260px',
+        height: '290px',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: 2,
         backgroundImage: `url(${bgPattern})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -25,6 +26,7 @@ export const IPSearcher = () => {
         </h1>
         <IPInput />
       </Box>
+      <IpInformation />
     </Box>
   )
 }

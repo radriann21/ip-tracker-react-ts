@@ -1,10 +1,29 @@
+import { useState } from "react"
 import { Box, TextField, Button } from "@mui/material"
+import { ipv4Regex, ipv6Regex } from "../utils/utils"
 
 export const IPInput = () => {
+  const [ipSearch, setIpSearch] = useState<string>('')
+  const [error, setError] = useState<string>('')
+
+  const handleSearch = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.currentTarget
+    setIpSearch(value)
+  }
+
+  const handleSearchSubmit = () => {
+    if (ipv4Regex.test(ipSearch) || ipv6Regex.test(ipSearch)) {
+      setError('')
+    } else {
+      setError('Invalid IP')
+    }
+  }
+
   return (
     <Box
       component={'label'}
       sx={{
+        position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -15,6 +34,7 @@ export const IPInput = () => {
       <TextField
         placeholder="Search for any IP address or domain"
         autoComplete="off"
+        onChange={handleSearch}
         sx={{
           borderTopLeftRadius: 16,
           borderBottomLeftRadius: 16,
@@ -27,6 +47,7 @@ export const IPInput = () => {
         }}
       />
       <Button
+        onClick={handleSearchSubmit}
         sx={{
           color: 'white',
           backgroundColor: 'black',
@@ -44,6 +65,9 @@ export const IPInput = () => {
       >
         Go!
       </Button>
+      <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '10px', fontSize: '12px' }}>
+        {error}
+      </span>
     </Box>
   )
 }
