@@ -1,5 +1,6 @@
 import { Box } from "@mui/material"
 import { IPSearcher } from "./components/IPSearcher"
+import { UserMap } from "./components/UserMap"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       }}
     >
       <IPSearcher />
+      <UserMap />
     </Box>
   )
 }

@@ -12,8 +12,11 @@ export const DataCard = ({ dataTitle, dataDisplay }: DataCardProps) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        borderRight: '1px solid rgb(224, 224, 224)',
-        padding: '1rem'
+        margin: '.8rem',
+        textAlign: {
+          xs: 'center',
+          sm: 'left'
+        }
       }}
     >
       <h2 style={{ color: 'hsl(0, 0%, 59%)', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '2px' }}>

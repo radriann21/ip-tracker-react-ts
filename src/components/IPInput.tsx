@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { useLocalization } from "../context/LocalizationContext"
 import { Box, TextField, Button } from "@mui/material"
 import { ipv4Regex, ipv6Regex } from "../utils/utils"
 
 export const IPInput = () => {
+  const { getForeignIP } = useLocalization()
   const [ipSearch, setIpSearch] = useState<string>('')
   const [error, setError] = useState<string>('')
 
@@ -14,6 +16,7 @@ export const IPInput = () => {
   const handleSearchSubmit = () => {
     if (ipv4Regex.test(ipSearch) || ipv6Regex.test(ipSearch)) {
       setError('')
+      getForeignIP(ipSearch)
     } else {
       setError('Invalid IP')
     }
@@ -27,8 +30,11 @@ export const IPInput = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '40%',
-        margin: '0 auto'
+        width: {
+          xs: '100%',
+          sm: '40%',
+        },
+        margin: '0 auto',
       }}
     >
       <TextField
